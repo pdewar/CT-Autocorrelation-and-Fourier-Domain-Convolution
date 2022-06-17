@@ -1,1 +1,1 @@
-# CT-Autocorrelation-and-Fourier-Domain-Convolution
+# Continous Time Autocorrelation and Fourier Domain Convolution
