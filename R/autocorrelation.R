@@ -1,9 +1,17 @@
+#will clear all objects includes hidden objects.
+rm(list = ls(all.names = TRUE)) 
 # library to read matlab data formats into R
-library(R.matlab)
-library(stats)
+if(!require('R.matlab')) {
+  install.packages('R.matlab')
+  library('R.matlab')
+}
+if(!require('stats')) {
+  install.packages('stats')
+  library('stats')
+}
 
 # read in our data
-cross_dsads <- readMat("C:/Users/mine/Desktop/R//HUM3HB.mat")
+cross_dsads <- readMat(".//HUM3HB.mat")
 
 T <- cross_dsads$T[1]
 

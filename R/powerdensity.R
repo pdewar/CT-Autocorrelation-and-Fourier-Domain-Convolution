@@ -1,8 +1,13 @@
+#will clear all objects includes hidden objects.
+rm(list = ls(all.names = TRUE)) 
 # library to read matlab data formats into R
-library(R.matlab)
+if(!require('R.matlab')) {
+  install.packages('R.matlab')
+  library('R.matlab')
+}
 
 # read in our data
-cross_dsads <- readMat("C:/Users/mine/Desktop/R//HUM3HB.mat")
+cross_dsads <- readMat(".//HUM3HB.mat")
 
 Fs <- 1/(cross_dsads$T)
 
@@ -35,20 +40,6 @@ a = t(a)
 
 power = abs(a*a)
 
-j
-
-#w = -Fs[1]/2
-
-#w
-
-#w2 = Fs[1]/length(a)
-
-#w2
-
-#w3 = (Fs[1]/2)-(Fs[1]/length(a))
-
-#w3
-
-freq = seq(from=-250, by=0.2, to=249.8)
+freq = seq(-Fs[1]/2, by=Fs[1]/length(a), to=(Fs[1]/2)-(Fs[1]/length(a)))
 
 plot(freq, power, type = "l", main = "Power vs Frequency")
